@@ -1771,7 +1771,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>560a942ef12572.85142247</argument>
+            <argument>560bbc511b6397.32757223</argument>
           </service>
         </argument>
       </argument>
@@ -1894,7 +1894,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>560a942ef12572.85142247</argument>
+            <argument>560bbc511b6397.32757223</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2357,8 +2357,8 @@
     <service id="doctrine.dbal.default_connection" class="Doctrine\DBAL\Connection">
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
-        <argument key="host"></argument>
-        <argument key="port"></argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">3306</argument>
         <argument key="dbname">mdpadmin</argument>
         <argument key="user">root</argument>
         <argument key="password"></argument>

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Entity\Users;
 
 class DefaultController extends Controller
 {
@@ -16,22 +17,20 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('AppBundle:default:index.html.php', array(
-            'title'     => 'Homepage',
-            'settings'  => $this->readSettings()
+            'title' => 'Homepage',
+            'user'  => $this->getUserById(1)
         ));
     }
 
-    private function readSettings()
-    {
-        return $this->get('kernel')->getRootDir();
-    }
-
-    private function getGoals()
-    {
-        $goals = array();
-
-        $em     = $this->getDoctrine()->getManager();
-        $query  = $em->createQuery('SELECT * FROM Goals');
-        $foals  = $query->getResult();
+    public function getUserById($id)
+    {   
+        $em   = $this->getDoctrine()->getRepository('AppBundle:Users');
+        $user = $em->find($id);
+        $info = array(
+            "username" => $user->getUsername(),
+            "fullname" => $user->getFullname()
+        );
+        
+        return $info;
     }
 }
